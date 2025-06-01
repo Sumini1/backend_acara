@@ -12,6 +12,13 @@ async function init() {
         const app = express();
         const PORT = 3000;
 
+        app.get("/", (req, res) => {
+            res.status(200).json({
+                message: "Server is Running",
+                data: null
+            })
+        })
+
         // ✅ Pasang body-parser DULU
         app.use(bodyParser.json());
 
