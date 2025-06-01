@@ -1,13 +1,29 @@
-import express from 'express';
-import router from './routes/api';
+import express from "express";
+import bodyParser from "body-parser";
+import router from "./routes/api";
+import db from "./utils/database";
 
+async function init() {
+    try {
+        const result = await db();
 
-const app = express()
+        console.log("database status", result);
 
-const PORT = 3000
+        const app = express();
+        const PORT = 3000;
 
-app.use("/api", router)
+        // ✅ Pasang body-parser DULU
+        app.use(bodyParser.json());
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
-})
+        // ✅ Baru pasang router
+        app.use("/api", router);
+
+        app.listen(PORT, () => {
+          console.log(`Server running on http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+init();
+
