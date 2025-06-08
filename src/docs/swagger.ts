@@ -32,6 +32,9 @@ const doc = {
         loginRequest: {
             identifier: "sumini",
             password: "1234"
+        },
+        ActivationRequest : {
+            code : "1234"
         }
     }
   }
