@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { encrypt } from "../utils/encryption";
 import { renderMailHtml, sendMail } from "../utils/mail/mail";
-import { CLIENT_HOST } from "../utils/env";
+import { CLIENT_HOST, EMAIL_SMTP_USER } from "../utils/env";
 // import { User } from './user.model';
 
 export interface User {
@@ -72,7 +72,7 @@ UserSchema.post("save", async function (doc, next) {
   try {
     const user = doc;
 
-    console.log("Send  Email to : ", user.email);
+    console.log("Send Email to : ", user.email);
     const contentMail = await renderMailHtml("registration-success", {
       username: user.username,
       fullName: user.fullName,
@@ -83,7 +83,7 @@ UserSchema.post("save", async function (doc, next) {
 
     // email yg akan dikirim ke user
     await sendMail({
-      from: "sumini93.19@gmail.com",
+      from: EMAIL_SMTP_USER,
       to: user.email,
       subject: "Aktivasi akun anda",
       html: contentMail,

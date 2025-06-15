@@ -66,14 +66,13 @@ export default {
       });
 
       //   simpan ke database
-     const user = new UserModel({
+     const user = await UserModel.create({
        fullName,
        username,
        email,
        password,
      });
 
-     await user.save(); // Ini yang akan memicu post("save") dan kirim email
 
      res.status(200).json({
        message: "Success registration!",
