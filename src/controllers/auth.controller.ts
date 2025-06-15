@@ -66,16 +66,20 @@ export default {
       });
 
       //   simpan ke database
-      const result = await UserModel.create({
-        fullName,
-        username,
-        email,
-        password,
-      });
-      res.status(200).json({
-        message: "Success registration!",
-        data: result,
-      });
+     const user = new UserModel({
+       fullName,
+       username,
+       email,
+       password,
+     });
+
+     await user.save(); // Ini yang akan memicu post("save") dan kirim email
+
+     res.status(200).json({
+       message: "Success registration!",
+       data: user,
+     });
+
     } catch (error) {
       const err = error as unknown as Error;
       res.status(400).json({
