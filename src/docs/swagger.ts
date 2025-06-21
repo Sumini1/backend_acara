@@ -33,6 +33,13 @@ const doc = {
             identifier: "sumini",
             password: "1234"
         },
+        RegisterRequest: {
+            fullName: "sumini",
+            username: "sumini",
+            email: "sumini93.19@gmail.com",
+            password: "1234",
+            confirmPassword: "1234"
+        },
         ActivationRequest : {
             code : "1234"
         }

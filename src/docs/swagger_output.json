@@ -146,6 +146,11 @@
               "schema": {
                 "$ref": "#/components/schemas/ActivationRequest"
               }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
             }
           }
         }
@@ -174,6 +179,34 @@
         },
         "xml": {
           "name": "loginRequest"
+        }
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "sumini"
+          },
+          "username": {
+            "type": "string",
+            "example": "sumini"
+          },
+          "email": {
+            "type": "string",
+            "example": "sumini93.19@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "1234"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": "1234"
+          }
+        },
+        "xml": {
+          "name": "RegisterRequest"
         }
       },
       "ActivationRequest": {

@@ -30,7 +30,7 @@ const registerValidateSchema = Yup.object({
       "Content at least one uppercase letter",
       (value) => {
         if (!value) return false;
-        const regex = /^(?=.*\d)/;
+        const regex = /^(?=.*[A-Z])/;
         return regex.test(value);
       }
     )
@@ -104,6 +104,8 @@ export default {
 
       const userByIdentifier = await UserModel.findOne({
         $or: [{ username: identifier }, { email: identifier }],
+
+        // hanya user yg sudah mengajtifkan activation code yg bisa login
         isActive: true,
       });
 
@@ -174,11 +176,7 @@ export default {
   #swagger.tags = ['Auth']
   #swagger.requestBody = {
     required: true,
-    content: {
-      "application/json": {
         schema: { $ref: "#/components/schemas/ActivationRequest" }
-      }
-    }
   }
 */
 
