@@ -106,7 +106,7 @@ export default {
         $or: [{ username: identifier }, { email: identifier }],
 
         // hanya user yg sudah mengajtifkan activation code yg bisa login
-        isActive: true,
+       // isActive: true,
       });
 
       if (!userByIdentifier) {
