@@ -12,4 +12,6 @@ export const EMAIL_SMTP_PORT: number = Number(process.env.EMAIL_SMTP_PORT) || 46
 export const EMAIL_SMTP_HOST: string = process.env.EMAIL_SMTP_HOST || "";
 export const EMAIL_SMTP_SERVICE_NAME : string = process.env.EMAIL_SMTP_SERVICE_NAME || "";
 export const CLIENT_HOST: string =
-  process.env.CLIENT_HOST || "https://frontend-acara-rho.vercel.app/";
+  process.env.CLIENT_HOST || "http://localhost:3000";
+
+  
