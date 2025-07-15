@@ -321,7 +321,7 @@
     "/events": {
       "post": {
         "tags": [
-          "Event"
+          "Events"
         ],
         "description": "",
         "parameters": [
