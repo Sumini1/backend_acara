@@ -1,4 +1,5 @@
 import { Response } from "express";
+import mongoose from "mongoose";
 import * as Yup from "yup";
 
 type Pagination = {
@@ -22,11 +23,39 @@ export default {
             return res.status(400).json({
                 meta: {
                     status: 400,
-                    message
+                    message,
                 } ,
-                data: error.errors
+                data: {
+                    [`${error.path}`]: error.errors
+                },
             })
         }
+        if (error instanceof mongoose.Error) {
+            return res.status(500).json({
+                meta: {
+                    status: 500,
+                    message: error.message
+                },
+                data: error.name
+            })
+        }
+        if ((error as any)?.code === 11000) {
+            const _err = error as any;
+            return res.status(500).json({
+                meta: {
+                    status: 500,
+                    message: _err.errorResponse.errmsg,
+                },
+                data: _err,
+            })
+        }
+        res.status(500).json({
+            meta: {
+                status: 500,
+                message,
+            },
+            data: error
+        })
     },
     unauthorized(res: Response, message: string = "Unauthorized") {
         res.status(403).json({
