@@ -81,7 +81,7 @@ router.post(
   eventController.create
   /*
 
-  #swagger.tags = ['Event']
+  #swagger.tags = ['Events']
   #swagger.security = [{
     "bearerAuth": {}
   }]
